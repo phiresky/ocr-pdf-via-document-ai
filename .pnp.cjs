@@ -27,6 +27,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["@google-cloud/documentai", "npm:6.3.0"],\
+          ["@swc/core", "npm:1.3.34"],\
           ["@types/node", "npm:18.13.0"],\
           ["@types/react", "npm:18.0.27"],\
           ["@types/react-dom", "npm:18.0.10"],\
@@ -301,6 +302,115 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/@sindresorhus-is-npm-4.6.0-7cad05c55e-9.zip/node_modules/@sindresorhus/is/",\
         "packageDependencies": [\
           ["@sindresorhus/is", "npm:4.6.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@swc/core", [\
+      ["npm:1.3.34", {\
+        "packageLocation": "./.yarn/unplugged/@swc-core-npm-1.3.34-cb47bc93e0/node_modules/@swc/core/",\
+        "packageDependencies": [\
+          ["@swc/core", "npm:1.3.34"],\
+          ["@swc/core-darwin-arm64", "npm:1.3.34"],\
+          ["@swc/core-darwin-x64", "npm:1.3.34"],\
+          ["@swc/core-linux-arm-gnueabihf", "npm:1.3.34"],\
+          ["@swc/core-linux-arm64-gnu", "npm:1.3.34"],\
+          ["@swc/core-linux-arm64-musl", "npm:1.3.34"],\
+          ["@swc/core-linux-x64-gnu", "npm:1.3.34"],\
+          ["@swc/core-linux-x64-musl", "npm:1.3.34"],\
+          ["@swc/core-win32-arm64-msvc", "npm:1.3.34"],\
+          ["@swc/core-win32-ia32-msvc", "npm:1.3.34"],\
+          ["@swc/core-win32-x64-msvc", "npm:1.3.34"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@swc/core-darwin-arm64", [\
+      ["npm:1.3.34", {\
+        "packageLocation": "./.yarn/unplugged/@swc-core-darwin-arm64-npm-1.3.34-6170dfcffa/node_modules/@swc/core-darwin-arm64/",\
+        "packageDependencies": [\
+          ["@swc/core-darwin-arm64", "npm:1.3.34"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@swc/core-darwin-x64", [\
+      ["npm:1.3.34", {\
+        "packageLocation": "./.yarn/unplugged/@swc-core-darwin-x64-npm-1.3.34-dc2aa436f0/node_modules/@swc/core-darwin-x64/",\
+        "packageDependencies": [\
+          ["@swc/core-darwin-x64", "npm:1.3.34"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@swc/core-linux-arm-gnueabihf", [\
+      ["npm:1.3.34", {\
+        "packageLocation": "./.yarn/unplugged/@swc-core-linux-arm-gnueabihf-npm-1.3.34-e5c7933f08/node_modules/@swc/core-linux-arm-gnueabihf/",\
+        "packageDependencies": [\
+          ["@swc/core-linux-arm-gnueabihf", "npm:1.3.34"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@swc/core-linux-arm64-gnu", [\
+      ["npm:1.3.34", {\
+        "packageLocation": "./.yarn/unplugged/@swc-core-linux-arm64-gnu-npm-1.3.34-c7a6a6f090/node_modules/@swc/core-linux-arm64-gnu/",\
+        "packageDependencies": [\
+          ["@swc/core-linux-arm64-gnu", "npm:1.3.34"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@swc/core-linux-arm64-musl", [\
+      ["npm:1.3.34", {\
+        "packageLocation": "./.yarn/unplugged/@swc-core-linux-arm64-musl-npm-1.3.34-a0f23566c6/node_modules/@swc/core-linux-arm64-musl/",\
+        "packageDependencies": [\
+          ["@swc/core-linux-arm64-musl", "npm:1.3.34"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@swc/core-linux-x64-gnu", [\
+      ["npm:1.3.34", {\
+        "packageLocation": "./.yarn/unplugged/@swc-core-linux-x64-gnu-npm-1.3.34-41da1f7a7f/node_modules/@swc/core-linux-x64-gnu/",\
+        "packageDependencies": [\
+          ["@swc/core-linux-x64-gnu", "npm:1.3.34"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@swc/core-linux-x64-musl", [\
+      ["npm:1.3.34", {\
+        "packageLocation": "./.yarn/unplugged/@swc-core-linux-x64-musl-npm-1.3.34-eab16f13ab/node_modules/@swc/core-linux-x64-musl/",\
+        "packageDependencies": [\
+          ["@swc/core-linux-x64-musl", "npm:1.3.34"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@swc/core-win32-arm64-msvc", [\
+      ["npm:1.3.34", {\
+        "packageLocation": "./.yarn/unplugged/@swc-core-win32-arm64-msvc-npm-1.3.34-8bf136e79e/node_modules/@swc/core-win32-arm64-msvc/",\
+        "packageDependencies": [\
+          ["@swc/core-win32-arm64-msvc", "npm:1.3.34"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@swc/core-win32-ia32-msvc", [\
+      ["npm:1.3.34", {\
+        "packageLocation": "./.yarn/unplugged/@swc-core-win32-ia32-msvc-npm-1.3.34-2b0bb72140/node_modules/@swc/core-win32-ia32-msvc/",\
+        "packageDependencies": [\
+          ["@swc/core-win32-ia32-msvc", "npm:1.3.34"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@swc/core-win32-x64-msvc", [\
+      ["npm:1.3.34", {\
+        "packageLocation": "./.yarn/unplugged/@swc-core-win32-x64-msvc-npm-1.3.34-b89e35e643/node_modules/@swc/core-win32-x64-msvc/",\
+        "packageDependencies": [\
+          ["@swc/core-win32-x64-msvc", "npm:1.3.34"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2597,6 +2707,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["textract-test", "workspace:."],\
           ["@google-cloud/documentai", "npm:6.3.0"],\
+          ["@swc/core", "npm:1.3.34"],\
           ["@types/node", "npm:18.13.0"],\
           ["@types/react", "npm:18.0.27"],\
           ["@types/react-dom", "npm:18.0.10"],\
@@ -2678,7 +2789,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["ts-node", "virtual:b23cde24df2066ebe71aae0af278030b3e6061a6c22368ecfaac44c14f766bda6f8623ad1bcca96edfb81f3cbddf10003f1aa72112023cacdd82f0f4d80ee499#npm:10.9.1"],\
           ["@cspotcode/source-map-support", "npm:0.8.1"],\
-          ["@swc/core", null],\
+          ["@swc/core", "npm:1.3.34"],\
           ["@swc/wasm", null],\
           ["@tsconfig/node10", "npm:1.0.9"],\
           ["@tsconfig/node12", "npm:1.0.11"],\

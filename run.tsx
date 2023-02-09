@@ -6,7 +6,8 @@ import { renderToStaticMarkup, renderToString } from "react-dom/server";
 import * as React from "react";
 import { basename } from "node:path";
 
-type DocumentAIOCR = ai.protos.google.cloud.documentai.v1.IProcessResponse;
+import docai = ai.protos.google.cloud.documentai.v1;
+type DocumentAIOCR = docai.IProcessResponse;
 async function runOCR(imageFilePath: string): Promise<DocumentAIOCR> {
   const { DocumentProcessorServiceClient } = ai.v1;
 
@@ -50,21 +51,38 @@ type Discriminate<U, K extends PropertyKey> = U extends any
     : U & Record<K, unknown>
   : never;
 
-function inOperator<K extends PropertyKey, T>(
+function inOperator<K extends PropertyKey, T extends object>(
   k: K,
   o: T
 ): o is Discriminate<T, K> {
   return k in o;
 }
 
+function assertArraySorted<T>(arr: T[], k: (t: T) => number) {
+  let last = -Infinity;
+  for (const e of arr) {
+    const cur = k(e);
+    if (!(cur >= last)) throw Error(`array unsorted`);
+    last = cur;
+  }
+}
 function toHOCR(
   imageFileName: string,
   [w, h]: [number, number],
-  page: ai.protos.google.cloud.documentai.v1.Document.IPage,
+  page: docai.Document.IPage,
   documentText: string
 ): JSX.Element {
   if (!page.lines) throw Error("no lines");
+  assertArraySorted(
+    page.lines,
+    (line) => +line.layout?.textAnchor?.textSegments?.[0].startIndex
+  );
+  assertArraySorted(
+    page.tokens!,
+    (t) => t.layout?.textAnchor?.textSegments?.[0].startIndex
+  );
   // todo: ocrp_lang, ocrp_poly, ocrp_nlp
+
   return (
     <html>
       <head>
@@ -78,7 +96,7 @@ function toHOCR(
         className="ocr_page"
         title={`image "${imageFileName}"; bbox 0 0 ${w} ${h};`}
       >
-        {page.lines?.map((line) => {
+        {page.lines?.map((line, i) => {
           const bbox = line.layout?.boundingPoly?.normalizedVertices;
           if (!bbox) throw Error("no bbox");
           const x = bbox.map((b) => Math.round(w * b.x!));
@@ -89,15 +107,18 @@ function toHOCR(
           const textSegs = line.layout?.textAnchor?.textSegments;
           if (!textSegs || textSegs.length !== 1)
             throw Error("expected exactly one text seg");
-          let text = documentText.slice(
-            textSegs[0].startIndex,
-            textSegs[0].endIndex
-          );
-          if(text[text.length - 1] !== "\n") throw Error(`expected \\n at end of line, got ${JSON.stringify(text)}`);
+          const textSeg = textSegs[0];
+          let text = documentText.slice(textSeg.startIndex, textSeg.endIndex);
+          if (text[text.length - 1] !== "\n")
+            throw Error(
+              `expected \\n at end of line, got ${JSON.stringify(text)}`
+            );
           text = text.slice(0, -1);
           console.log(text);
           return (
-            <span className="ocr_line" title={`bbox ${bbox2}`}>{text}</span>
+            <span key={i} className="ocr_line" title={`bbox ${bbox2}`}>
+              {text}
+            </span>
           );
         })}
       </div>
@@ -106,7 +127,7 @@ function toHOCR(
   );
 }
 async function main(imageFilePath: string) {
-  const jsonFilePath = imageFilePath + ".json";
+  const jsonFilePath = imageFilePath + ".docai.json";
   const txtFilePath = imageFilePath + ".ocr.txt";
   const hocrFilePath = imageFilePath + ".hocr";
   let ocr: DocumentAIOCR;
@@ -139,7 +160,7 @@ async function main(imageFilePath: string) {
     ocr.document.pages[0],
     ocr.document.text
   );
-  const hocrString = renderToStaticMarkup(hocr);
+  const hocrString = "<!doctype html>\n" + renderToStaticMarkup(hocr);
   await fs.writeFile(hocrFilePath, hocrString, { flag: "w" });
 }
 
