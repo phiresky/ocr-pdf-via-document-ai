@@ -27,6 +27,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["@google-cloud/documentai", "npm:6.3.0"],\
+          ["@pdf-lib/fontkit", "npm:1.1.1"],\
           ["@swc/core", "npm:1.3.34"],\
           ["@types/long", "npm:5.0.0"],\
           ["@types/node", "npm:18.13.0"],\
@@ -35,6 +36,7 @@ const RAW_RUNTIME_STATE =
           ["@yarnpkg/sdks", "npm:3.0.0-rc.39"],\
           ["binary-search", "npm:1.3.6"],\
           ["long", "npm:5.2.1"],\
+          ["pdf-lib", "npm:1.17.1"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:b23cde24df2066ebe71aae0af278030b3e6061a6c22368ecfaac44c14f766bda6f8623ad1bcca96edfb81f3cbddf10003f1aa72112023cacdd82f0f4d80ee499#npm:18.2.0"],\
           ["ts-node", "virtual:b23cde24df2066ebe71aae0af278030b3e6061a6c22368ecfaac44c14f766bda6f8623ad1bcca96edfb81f3cbddf10003f1aa72112023cacdd82f0f4d80ee499#npm:10.9.1"],\
@@ -204,6 +206,36 @@ const RAW_RUNTIME_STATE =
           ["@nodelib/fs.walk", "npm:1.2.8"],\
           ["@nodelib/fs.scandir", "npm:2.1.5"],\
           ["fastq", "npm:1.15.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@pdf-lib/fontkit", [\
+      ["npm:1.1.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/@pdf-lib-fontkit-npm-1.1.1-67168fc271-9.zip/node_modules/@pdf-lib/fontkit/",\
+        "packageDependencies": [\
+          ["@pdf-lib/fontkit", "npm:1.1.1"],\
+          ["pako", "npm:1.0.11"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@pdf-lib/standard-fonts", [\
+      ["npm:1.0.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/@pdf-lib-standard-fonts-npm-1.0.0-963255903e-9.zip/node_modules/@pdf-lib/standard-fonts/",\
+        "packageDependencies": [\
+          ["@pdf-lib/standard-fonts", "npm:1.0.0"],\
+          ["pako", "npm:1.0.11"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@pdf-lib/upng", [\
+      ["npm:1.0.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/@pdf-lib-upng-npm-1.0.1-b6cf54efaf-9.zip/node_modules/@pdf-lib/upng/",\
+        "packageDependencies": [\
+          ["@pdf-lib/upng", "npm:1.0.1"],\
+          ["pako", "npm:1.0.11"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2301,6 +2333,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["pako", [\
+      ["npm:1.0.11", {\
+        "packageLocation": "../../../.yarn/berry/cache/pako-npm-1.0.11-b8f1b69d3e-9.zip/node_modules/pako/",\
+        "packageDependencies": [\
+          ["pako", "npm:1.0.11"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["path-is-absolute", [\
       ["npm:1.0.1", {\
         "packageLocation": "../../../.yarn/berry/cache/path-is-absolute-npm-1.0.1-31bc695ffd-9.zip/node_modules/path-is-absolute/",\
@@ -2324,6 +2365,19 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/path-type-npm-4.0.0-10d47fc86a-9.zip/node_modules/path-type/",\
         "packageDependencies": [\
           ["path-type", "npm:4.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["pdf-lib", [\
+      ["npm:1.17.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/pdf-lib-npm-1.17.1-131ca75702-9.zip/node_modules/pdf-lib/",\
+        "packageDependencies": [\
+          ["pdf-lib", "npm:1.17.1"],\
+          ["@pdf-lib/standard-fonts", "npm:1.0.0"],\
+          ["@pdf-lib/upng", "npm:1.0.1"],\
+          ["pako", "npm:1.0.11"],\
+          ["tslib", "npm:1.14.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2727,6 +2781,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["textract-test", "workspace:."],\
           ["@google-cloud/documentai", "npm:6.3.0"],\
+          ["@pdf-lib/fontkit", "npm:1.1.1"],\
           ["@swc/core", "npm:1.3.34"],\
           ["@types/long", "npm:5.0.0"],\
           ["@types/node", "npm:18.13.0"],\
@@ -2735,6 +2790,7 @@ const RAW_RUNTIME_STATE =
           ["@yarnpkg/sdks", "npm:3.0.0-rc.39"],\
           ["binary-search", "npm:1.3.6"],\
           ["long", "npm:5.2.1"],\
+          ["pdf-lib", "npm:1.17.1"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:b23cde24df2066ebe71aae0af278030b3e6061a6c22368ecfaac44c14f766bda6f8623ad1bcca96edfb81f3cbddf10003f1aa72112023cacdd82f0f4d80ee499#npm:18.2.0"],\
           ["ts-node", "virtual:b23cde24df2066ebe71aae0af278030b3e6061a6c22368ecfaac44c14f766bda6f8623ad1bcca96edfb81f3cbddf10003f1aa72112023cacdd82f0f4d80ee499#npm:10.9.1"],\
@@ -2845,6 +2901,13 @@ const RAW_RUNTIME_STATE =
       }]\
     ]],\
     ["tslib", [\
+      ["npm:1.14.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/tslib-npm-1.14.1-102499115e-9.zip/node_modules/tslib/",\
+        "packageDependencies": [\
+          ["tslib", "npm:1.14.1"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
       ["npm:2.5.0", {\
         "packageLocation": "../../../.yarn/berry/cache/tslib-npm-2.5.0-bb364efebd-9.zip/node_modules/tslib/",\
         "packageDependencies": [\

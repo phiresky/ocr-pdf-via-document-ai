@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "@google-cloud/documentai": "^6.3.0",
+    "@pdf-lib/fontkit": "^1.1.1",
     "@swc/core": "^1.3.34",
     "@types/long": "^5.0.0",
     "@types/node": "^18.13.0",
@@ -13,6 +14,7 @@
     "@types/react-dom": "^18.0.10",
     "binary-search": "^1.3.6",
     "long": "^5.2.1",
+    "pdf-lib": "^1.17.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "ts-node": "^10.9.1",
