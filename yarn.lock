@@ -37,6 +37,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.20.13":
+  version: 7.20.13
+  resolution: "@babel/runtime@npm:7.20.13"
+  dependencies:
+    regenerator-runtime: "npm:^0.13.11"
+  checksum: 0e09b4915318248aeeccdf6dc6a8ccdeedbe4b7187fa4159eaa569c4a407c36f3b8689296296b25246671987efe2253dd6e3bab63a40deedcdbd49b8845204e6
+  languageName: node
+  linkType: hard
+
 "@babel/types@npm:^7.8.3":
   version: 7.20.7
   resolution: "@babel/types@npm:7.20.7"
@@ -148,6 +157,15 @@ __metadata:
     "@nodelib/fs.scandir": "npm:2.1.5"
     fastq: "npm:^1.6.0"
   checksum: 3542284aa2d6e313cfd4ae40a2502b53e1f35da6f4f9890422aad018c04866f6bfb96c4105e23dbd9fb93cfc630cc607777df658a3a525d63a3bfb9bcb2b0f21
+  languageName: node
+  linkType: hard
+
+"@oneidentity/zstd-js@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "@oneidentity/zstd-js@npm:1.0.3"
+  dependencies:
+    "@types/emscripten": "npm:^1.39.4"
+  checksum: 3a3d4d6eeea6806ee7937f46ff8987f95d57ce1316d6c033c8aa2b0b0d9b45cefd526eea1c948f88fcf5c6a7f8e335d003c4e2118ee37eb9fec9c7b850dc558c
   languageName: node
   linkType: hard
 
@@ -416,7 +434,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/emscripten@npm:^1.39.6":
+"@types/emscripten@npm:^1.39.4, @types/emscripten@npm:^1.39.6":
   version: 1.39.6
   resolution: "@types/emscripten@npm:1.39.6"
   checksum: 0b2219f4c4a5126433135c331047be50bdfabac1cc39b37a8a2d8aec9cdfa62148bc80a485956924751d5007254f82ad8fc56f001999d79bdeea298a4ec4c712
@@ -968,6 +986,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"complex.js@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "complex.js@npm:2.1.1"
+  checksum: d9f2acf570c29df4c8b2a9f2cc3992c6f783e5c534be9606f8c61115714e0eea6f05469e120417328153cb4296633f09b353cc2da65ace806e26f7aef73f0c62
+  languageName: node
+  linkType: hard
+
 "concat-map@npm:0.0.1":
   version: 0.0.1
   resolution: "concat-map@npm:0.0.1"
@@ -1016,6 +1041,13 @@ __metadata:
     supports-color:
       optional: true
   checksum: ab50d98b6f2a0e803379e8f789017f4215efd0e085774623e462c691e9f99bfd359a35f7424ff401da3ea58b31f89ceebc9ea35779b4a94f78b0ee3e235b6640
+  languageName: node
+  linkType: hard
+
+"decimal.js@npm:^10.4.3":
+  version: 10.4.3
+  resolution: "decimal.js@npm:10.4.3"
+  checksum: 0fbf4c97adc9826a2f1cf2ae8be8cc00cca3f2b61643ee19f0dd8ee55f11385ed0111d77c8cd234e151c80da1454b20c8e61f0354e3b90b5bec3a72379359049
   languageName: node
   linkType: hard
 
@@ -1113,6 +1145,13 @@ __metadata:
   version: 3.1.1
   resolution: "escalade@npm:3.1.1"
   checksum: 37f3535f99193a5ff755af30866bb55828aff044bdc14e1844d0965470ba87ef686761fbbf2cea02955f1bb8510f72c3308e7dbe2d794fa85058a33bf60ea372
+  languageName: node
+  linkType: hard
+
+"escape-latex@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "escape-latex@npm:1.2.0"
+  checksum: c49d653bc06d9b21a87a8308fa016383044b23a2e399fcc3db6b133d1106db041b8ec9b80f9d0f6514f0c0a14990d944a81c04408d80ec0fae997477333b32b4
   languageName: node
   linkType: hard
 
@@ -1247,6 +1286,13 @@ __metadata:
   dependencies:
     to-regex-range: "npm:^5.0.1"
   checksum: e5ccb299de8a12ea5dcef663f658933e2fbdf40aeab3e7e5af9132e82d7f6bdd0984ac2e122dc1825707f33917c308bc40b632b852331c900c317c5d64bb7bf0
+  languageName: node
+  linkType: hard
+
+"fraction.js@npm:^4.2.0":
+  version: 4.2.0
+  resolution: "fraction.js@npm:4.2.0"
+  checksum: b9136779dc6442d15595bf29c9cdec784968645711a6df0e62bfffc669d9d895a79d760b1a95f0a58adf5893037bf91a0e7ef0b68f105526d3418c5a77cd115b
   languageName: node
   linkType: hard
 
@@ -1568,6 +1614,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"javascript-natural-sort@npm:^0.7.1":
+  version: 0.7.1
+  resolution: "javascript-natural-sort@npm:0.7.1"
+  checksum: 1eef5ae7f34691e9febdcfe1fa44c1a9436631fb7b93a48ab614ce460e3ab344abf6a341bd6d1a82f0df7ac7e8040df360d9a643d7651978c92e7fa9b9f01d23
+  languageName: node
+  linkType: hard
+
 "js-tokens@npm:^3.0.0 || ^4.0.0":
   version: 4.0.0
   resolution: "js-tokens@npm:4.0.0"
@@ -1788,6 +1841,25 @@ __metadata:
   bin:
     marked: bin/marked.js
   checksum: 2dd223c4f78d723c583d3be8bb7d7d9d7f92f2e201279b65bd41136755730228f12c4140393f3989f71be448bf30218e8fcbddee071316461c275f9af555b053
+  languageName: node
+  linkType: hard
+
+"mathjs@npm:^11.5.1":
+  version: 11.5.1
+  resolution: "mathjs@npm:11.5.1"
+  dependencies:
+    "@babel/runtime": "npm:^7.20.13"
+    complex.js: "npm:^2.1.1"
+    decimal.js: "npm:^10.4.3"
+    escape-latex: "npm:^1.2.0"
+    fraction.js: "npm:^4.2.0"
+    javascript-natural-sort: "npm:^0.7.1"
+    seedrandom: "npm:^3.0.5"
+    tiny-emitter: "npm:^2.1.0"
+    typed-function: "npm:^4.1.0"
+  bin:
+    mathjs: bin/cli.js
+  checksum: d85b84fc2ae81fddadc13785743343f03522d54b308ae5776d19d4cb232cf6da00543ed3d70dd3e508340b702dd7c55e122a0b23fed779fad5b7737d0a2ee284
   languageName: node
   linkType: hard
 
@@ -2139,6 +2211,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"regenerator-runtime@npm:^0.13.11":
+  version: 0.13.11
+  resolution: "regenerator-runtime@npm:0.13.11"
+  checksum: 0485db63ce47760e28329590cb9f8b208365d076dbf2edaa32e551a7c0451fc6f7557b225268422c960ffa4fbc6ff86d63d6a747aacbf6b10ed6a747b432e3c8
+  languageName: node
+  linkType: hard
+
 "repeat-string@npm:^1.6.1":
   version: 1.6.1
   resolution: "repeat-string@npm:1.6.1"
@@ -2222,12 +2301,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sax@npm:1.2.4":
+  version: 1.2.4
+  resolution: "sax@npm:1.2.4"
+  checksum: 2917c3ef3cab1307aa14036705b599c7fd1b51756189e67bd1f23193cdc5ceac9bd59104830542cfb6326febfd1dce73acc08fecfa615c4c920c94a9a6ccbda4
+  languageName: node
+  linkType: hard
+
 "scheduler@npm:^0.23.0":
   version: 0.23.0
   resolution: "scheduler@npm:0.23.0"
   dependencies:
     loose-envify: "npm:^1.1.0"
   checksum: f4022b95cdc282668643da4850f55fe70c899aa956d11819f196e2ca892271bdb253613e53997852094f9351f7c72d057eea8b28d9b4bcb93bcb1c6d09985c82
+  languageName: node
+  linkType: hard
+
+"seedrandom@npm:^3.0.5":
+  version: 3.0.5
+  resolution: "seedrandom@npm:3.0.5"
+  checksum: c04d9a1c1c28bc1d5737f5fb02291ad56c34d57599034ce4a0e65578a84c3128d81d20d70729e0e32ef57e3c6b914b3751cbba95e9dddbd0212a405b2f921119
   languageName: node
   linkType: hard
 
@@ -2350,6 +2443,7 @@ __metadata:
   resolution: "textract-test@workspace:."
   dependencies:
     "@google-cloud/documentai": "npm:^6.3.0"
+    "@oneidentity/zstd-js": "npm:^1.0.3"
     "@pdf-lib/fontkit": "npm:^1.1.1"
     "@swc/core": "npm:^1.3.34"
     "@types/long": "npm:^5.0.0"
@@ -2359,13 +2453,23 @@ __metadata:
     "@yarnpkg/sdks": "npm:^3.0.0-rc.39"
     binary-search: "npm:^1.3.6"
     long: "npm:^5.2.1"
+    mathjs: "npm:^11.5.1"
     pdf-lib: "npm:^1.17.1"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
+    ts-exif-parser: "npm:^0.2.2"
     ts-node: "npm:^10.9.1"
     typescript: "npm:^4.9.5"
+    zstd-codec: "npm:^0.1.4"
   languageName: unknown
   linkType: soft
+
+"tiny-emitter@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "tiny-emitter@npm:2.1.0"
+  checksum: 3b905925cfa3f75302be0f324d2d7c1cf563c09304bbd40bf38c3abf3b8a93f2f2aa3a2e4b099400a9a1f44bc087fab42800314e8a5ea71cb81bc91ea2d8f1bc
+  languageName: node
+  linkType: hard
 
 "tinylogic@npm:^2.0.0":
   version: 2.0.0
@@ -2410,6 +2514,15 @@ __metadata:
   version: 1.1.0
   resolution: "treeify@npm:1.1.0"
   checksum: d995a3ef5940b00b39e6e6db6b11bfe0c39259d9c97b02ad7aef6e7322744e237f9567599417105bcc0cc6c1549270d81288c0d614f8d05b3adaf17a624ab9c0
+  languageName: node
+  linkType: hard
+
+"ts-exif-parser@npm:^0.2.2":
+  version: 0.2.2
+  resolution: "ts-exif-parser@npm:0.2.2"
+  dependencies:
+    sax: "npm:1.2.4"
+  checksum: c4cbb421eb470f88f79419838eed70adb9bf1ac120c21a45575af8d0fbe9a584a6936ed5e24ba3df160e24fcd78b619f6644f3555e11fe6004f199f23466c909
   languageName: node
   linkType: hard
 
@@ -2485,6 +2598,13 @@ __metadata:
   dependencies:
     prelude-ls: "npm:~1.1.2"
   checksum: 92c9d1306c41f84ebc2af6f53326c59c6ed1d3c6a89d5c8a8ec20ef959af135d97b8f0f0773137bd50dd54098b5742f76129141a4519cd77b5f38517cf3637b2
+  languageName: node
+  linkType: hard
+
+"typed-function@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "typed-function@npm:4.1.0"
+  checksum: 987d8007aeb2809a27347b91e1dd317c32e33b2083468caba863109d72be424bbe10378ab376457da65ddd9567b1fd3c2a1b26780ebcbcbffe56eb04d971f7f4
   languageName: node
   linkType: hard
 
@@ -2645,5 +2765,12 @@ __metadata:
   version: 3.1.1
   resolution: "yn@npm:3.1.1"
   checksum: 890a9ce10f1f6691316f521444dcdc2d012dbfba423ec2252444dab5888def4ee48751304e51302c6d14197a1e9407256153a357c955bff1d659df592cfda456
+  languageName: node
+  linkType: hard
+
+"zstd-codec@npm:^0.1.4":
+  version: 0.1.4
+  resolution: "zstd-codec@npm:0.1.4"
+  checksum: a792754de43d655df9ab403678cf34ceb9e0c04e0412e65a0010d9096ffcfb6669c50613ca203dbe6539214069464ae283118bd09bb24bff4c2dff870f8947fa
   languageName: node
   linkType: hard

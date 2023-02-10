@@ -27,6 +27,7 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./",\
         "packageDependencies": [\
           ["@google-cloud/documentai", "npm:6.3.0"],\
+          ["@oneidentity/zstd-js", "npm:1.0.3"],\
           ["@pdf-lib/fontkit", "npm:1.1.1"],\
           ["@swc/core", "npm:1.3.34"],\
           ["@types/long", "npm:5.0.0"],\
@@ -36,11 +37,14 @@ const RAW_RUNTIME_STATE =
           ["@yarnpkg/sdks", "npm:3.0.0-rc.39"],\
           ["binary-search", "npm:1.3.6"],\
           ["long", "npm:5.2.1"],\
+          ["mathjs", "npm:11.5.1"],\
           ["pdf-lib", "npm:1.17.1"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:b23cde24df2066ebe71aae0af278030b3e6061a6c22368ecfaac44c14f766bda6f8623ad1bcca96edfb81f3cbddf10003f1aa72112023cacdd82f0f4d80ee499#npm:18.2.0"],\
+          ["ts-exif-parser", "npm:0.2.2"],\
           ["ts-node", "virtual:b23cde24df2066ebe71aae0af278030b3e6061a6c22368ecfaac44c14f766bda6f8623ad1bcca96edfb81f3cbddf10003f1aa72112023cacdd82f0f4d80ee499#npm:10.9.1"],\
-          ["typescript", "patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=23ec76"]\
+          ["typescript", "patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=23ec76"],\
+          ["zstd-codec", "npm:0.1.4"]\
         ],\
         "linkType": "SOFT"\
       }]\
@@ -79,6 +83,16 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@babel/parser", "npm:7.20.15"],\
           ["@babel/types", "npm:7.20.7"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@babel/runtime", [\
+      ["npm:7.20.13", {\
+        "packageLocation": "../../../.yarn/berry/cache/@babel-runtime-npm-7.20.13-45eeb6d8ad-9.zip/node_modules/@babel/runtime/",\
+        "packageDependencies": [\
+          ["@babel/runtime", "npm:7.20.13"],\
+          ["regenerator-runtime", "npm:0.13.11"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -206,6 +220,16 @@ const RAW_RUNTIME_STATE =
           ["@nodelib/fs.walk", "npm:1.2.8"],\
           ["@nodelib/fs.scandir", "npm:2.1.5"],\
           ["fastq", "npm:1.15.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@oneidentity/zstd-js", [\
+      ["npm:1.0.3", {\
+        "packageLocation": "../../../.yarn/berry/cache/@oneidentity-zstd-js-npm-1.0.3-7e604043d1-9.zip/node_modules/@oneidentity/zstd-js/",\
+        "packageDependencies": [\
+          ["@oneidentity/zstd-js", "npm:1.0.3"],\
+          ["@types/emscripten", "npm:1.39.6"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -1167,6 +1191,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["complex.js", [\
+      ["npm:2.1.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/complex.js-npm-2.1.1-2beaccef20-9.zip/node_modules/complex.js/",\
+        "packageDependencies": [\
+          ["complex.js", "npm:2.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["concat-map", [\
       ["npm:0.0.1", {\
         "packageLocation": "../../../.yarn/berry/cache/concat-map-npm-0.0.1-85a921b7ee-9.zip/node_modules/concat-map/",\
@@ -1234,6 +1267,15 @@ const RAW_RUNTIME_STATE =
         "packagePeers": [\
           "@types/supports-color",\
           "supports-color"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["decimal.js", [\
+      ["npm:10.4.3", {\
+        "packageLocation": "../../../.yarn/berry/cache/decimal.js-npm-10.4.3-e7d483387c-9.zip/node_modules/decimal.js/",\
+        "packageDependencies": [\
+          ["decimal.js", "npm:10.4.3"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -1348,6 +1390,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/escalade-npm-3.1.1-e02da076aa-9.zip/node_modules/escalade/",\
         "packageDependencies": [\
           ["escalade", "npm:3.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["escape-latex", [\
+      ["npm:1.2.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/escape-latex-npm-1.2.0-1481ca81a7-9.zip/node_modules/escape-latex/",\
+        "packageDependencies": [\
+          ["escape-latex", "npm:1.2.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -1496,6 +1547,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["fill-range", "npm:7.0.1"],\
           ["to-regex-range", "npm:5.0.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["fraction.js", [\
+      ["npm:4.2.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/fraction.js-npm-4.2.0-28efe4afc7-9.zip/node_modules/fraction.js/",\
+        "packageDependencies": [\
+          ["fraction.js", "npm:4.2.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -1858,6 +1918,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["javascript-natural-sort", [\
+      ["npm:0.7.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/javascript-natural-sort-npm-0.7.1-9018625996-9.zip/node_modules/javascript-natural-sort/",\
+        "packageDependencies": [\
+          ["javascript-natural-sort", "npm:0.7.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["js-tokens", [\
       ["npm:4.0.0", {\
         "packageLocation": "../../../.yarn/berry/cache/js-tokens-npm-4.0.0-0ac852e9e2-9.zip/node_modules/js-tokens/",\
@@ -2108,6 +2177,24 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/marked-npm-4.2.12-59aaa5afdc-9.zip/node_modules/marked/",\
         "packageDependencies": [\
           ["marked", "npm:4.2.12"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["mathjs", [\
+      ["npm:11.5.1", {\
+        "packageLocation": "../../../.yarn/berry/cache/mathjs-npm-11.5.1-93765de5cf-9.zip/node_modules/mathjs/",\
+        "packageDependencies": [\
+          ["mathjs", "npm:11.5.1"],\
+          ["@babel/runtime", "npm:7.20.13"],\
+          ["complex.js", "npm:2.1.1"],\
+          ["decimal.js", "npm:10.4.3"],\
+          ["escape-latex", "npm:1.2.0"],\
+          ["fraction.js", "npm:4.2.0"],\
+          ["javascript-natural-sort", "npm:0.7.1"],\
+          ["seedrandom", "npm:3.0.5"],\
+          ["tiny-emitter", "npm:2.1.0"],\
+          ["typed-function", "npm:4.1.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2538,6 +2625,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["regenerator-runtime", [\
+      ["npm:0.13.11", {\
+        "packageLocation": "../../../.yarn/berry/cache/regenerator-runtime-npm-0.13.11-90bf536060-9.zip/node_modules/regenerator-runtime/",\
+        "packageDependencies": [\
+          ["regenerator-runtime", "npm:0.13.11"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["repeat-string", [\
       ["npm:1.6.1", {\
         "packageLocation": "../../../.yarn/berry/cache/repeat-string-npm-1.6.1-bc8e388655-9.zip/node_modules/repeat-string/",\
@@ -2634,12 +2730,30 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["sax", [\
+      ["npm:1.2.4", {\
+        "packageLocation": "../../../.yarn/berry/cache/sax-npm-1.2.4-178f05f12f-9.zip/node_modules/sax/",\
+        "packageDependencies": [\
+          ["sax", "npm:1.2.4"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["scheduler", [\
       ["npm:0.23.0", {\
         "packageLocation": "../../../.yarn/berry/cache/scheduler-npm-0.23.0-a379a6bc3b-9.zip/node_modules/scheduler/",\
         "packageDependencies": [\
           ["scheduler", "npm:0.23.0"],\
           ["loose-envify", "npm:1.4.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["seedrandom", [\
+      ["npm:3.0.5", {\
+        "packageLocation": "../../../.yarn/berry/cache/seedrandom-npm-3.0.5-6946e8f8db-9.zip/node_modules/seedrandom/",\
+        "packageDependencies": [\
+          ["seedrandom", "npm:3.0.5"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2781,6 +2895,7 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["textract-test", "workspace:."],\
           ["@google-cloud/documentai", "npm:6.3.0"],\
+          ["@oneidentity/zstd-js", "npm:1.0.3"],\
           ["@pdf-lib/fontkit", "npm:1.1.1"],\
           ["@swc/core", "npm:1.3.34"],\
           ["@types/long", "npm:5.0.0"],\
@@ -2790,13 +2905,25 @@ const RAW_RUNTIME_STATE =
           ["@yarnpkg/sdks", "npm:3.0.0-rc.39"],\
           ["binary-search", "npm:1.3.6"],\
           ["long", "npm:5.2.1"],\
+          ["mathjs", "npm:11.5.1"],\
           ["pdf-lib", "npm:1.17.1"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:b23cde24df2066ebe71aae0af278030b3e6061a6c22368ecfaac44c14f766bda6f8623ad1bcca96edfb81f3cbddf10003f1aa72112023cacdd82f0f4d80ee499#npm:18.2.0"],\
+          ["ts-exif-parser", "npm:0.2.2"],\
           ["ts-node", "virtual:b23cde24df2066ebe71aae0af278030b3e6061a6c22368ecfaac44c14f766bda6f8623ad1bcca96edfb81f3cbddf10003f1aa72112023cacdd82f0f4d80ee499#npm:10.9.1"],\
-          ["typescript", "patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=23ec76"]\
+          ["typescript", "patch:typescript@npm%3A4.9.5#optional!builtin<compat/typescript>::version=4.9.5&hash=23ec76"],\
+          ["zstd-codec", "npm:0.1.4"]\
         ],\
         "linkType": "SOFT"\
+      }]\
+    ]],\
+    ["tiny-emitter", [\
+      ["npm:2.1.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/tiny-emitter-npm-2.1.0-2a4d94f487-9.zip/node_modules/tiny-emitter/",\
+        "packageDependencies": [\
+          ["tiny-emitter", "npm:2.1.0"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["tinylogic", [\
@@ -2851,6 +2978,16 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/treeify-npm-1.1.0-abf9292333-9.zip/node_modules/treeify/",\
         "packageDependencies": [\
           ["treeify", "npm:1.1.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["ts-exif-parser", [\
+      ["npm:0.2.2", {\
+        "packageLocation": "../../../.yarn/berry/cache/ts-exif-parser-npm-0.2.2-6e0c4795c8-9.zip/node_modules/ts-exif-parser/",\
+        "packageDependencies": [\
+          ["ts-exif-parser", "npm:0.2.2"],\
+          ["sax", "npm:1.2.4"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2940,6 +3077,15 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["type-check", "npm:0.3.2"],\
           ["prelude-ls", "npm:1.1.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["typed-function", [\
+      ["npm:4.1.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/typed-function-npm-4.1.0-fe0bfcf8e1-9.zip/node_modules/typed-function/",\
+        "packageDependencies": [\
+          ["typed-function", "npm:4.1.0"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -3115,6 +3261,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/yn-npm-3.1.1-8ad4259784-9.zip/node_modules/yn/",\
         "packageDependencies": [\
           ["yn", "npm:3.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["zstd-codec", [\
+      ["npm:0.1.4", {\
+        "packageLocation": "../../../.yarn/berry/cache/zstd-codec-npm-0.1.4-6657a3c127-9.zip/node_modules/zstd-codec/",\
+        "packageDependencies": [\
+          ["zstd-codec", "npm:0.1.4"]\
         ],\
         "linkType": "HARD"\
       }]\
