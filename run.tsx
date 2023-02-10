@@ -13,18 +13,27 @@ import {
   rgb,
   setCharacterSqueeze,
   setTextRenderingMode,
+  StandardFonts,
   TextRenderingMode,
 } from "pdf-lib";
 import * as React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { ExifParserFactory } from "ts-exif-parser";
 import * as zlib from "zlib";
+import { parse } from "ts-command-line-args";
 import docai = ai.protos.google.cloud.documentai.v1;
+const zstd = ZstdInit();
 
 type DocAiResp = docai.IProcessResponse & {
   requestMeta: { apiEndpoint: string; processorName: string };
 };
 async function runOCR(imageFilePath: string): Promise<DocAiResp> {
+  if (
+    !imageFilePath.toLowerCase().endsWith(".jpg") &&
+    !imageFilePath.toLowerCase().endsWith(".jpeg")
+  ) {
+    throw Error(`file ${imageFilePath} is not a jpg`);
+  }
   const { DocumentProcessorServiceClient } = ai.v1;
   const apiEndpoint = process.env.API_ENDPOINT;
   if (!apiEndpoint) throw Error("no API_ENDPOINT");
@@ -219,41 +228,14 @@ function toHOCR(
   );
 }
 
-function invisibleFont(): Uint8Array {
-  const ttf = Buffer.from(
-    `eJzdlk1sG0UUx/+zs3btNEmrUKpCPxikSqRS4jpfFURUagmkEQQoiRXgAl07Y3vL2mvt2ml8APXG
-hQPiUEGEVDhWVHyIC1REPSAhBOWA+BCgSoULUqsKcWhVBKjhzfPU+VCi3Flrdn7vzZv33ryZ3TUE
-gC6chsTx8fHck1ONd98D0jnS7jn26GPjyMIleZhk9fT0wcHFl1/9GRDPkTxTqHg1dMkzJH9CbbTk
-xbWlJfKEdB+Np0pBswi+nH/Nvay92VtfJp4nvEztUJkUHXsdksUOkveXK/X5FNuLD838ICx4dv4N
-I1e8+ZqbxwCNP2jyqXoV/fmhy+WW/2SqFsb1pX68SfEpZ/TCrI3aHzcP//jitodvYmvL+6Xcr5mV
-vb1ScCzRnPRPfz+LsRSWNasuwRrZlh1sx0E8AriddyzEDfE6EkglFhJDJO5u9fJbFJ0etEMB78D5
-4Djm/7kjT0wqhSNURyS+u/2MGJKRu+0ExNkrt1pJti9p2x6b3TBJgmUXuzgnDmI8UWMbkVxeinCw
-Mo311/l/v3rF7+01D+OkZYE0PrbsYAu+sSyxU0jLLtIiYzmBrFiwnCT9FcsdOOK8ZHbFleSn0znP
-nDCnxbnAnGT9JeYtrP+FOcV8nTlNnsoc3bBAD85adtCNRcsSffjBsoseca/lBE7Q09LiJOm/ttyB
-0+IqcwfncJt5q4krO5k7jV7uY+5m7mPebuLKUea7iHvk48w72OYF5rvZT8C8k/WvMN/Dc19j3s02
-bzPvZZv3me9j/ox5P9t/xdzPzPVJcc7yGnPL/1+GO1lPVTXM+VNWOTRRg0YRHgrUK5yj1kvaEA1E
-xAWiCtl4qJL2ADKkG6Q3XxYjzEcR0E9hCj5KtBd1xCxp6jV5mKP7LJBr1nTRK2h1TvU2w0akCmGl
-5lWbBzJqMJsdyaijQaCm/FK5HqspHetoTtMsn4LO0T2mlqcwmlTVOT/28wGhCVKiNANKLiJRlxqB
-F603axQznIzRhDSq6EWZ4UUs+xud0VHsh1U1kMlmNwu9kTuFaRqpURU0VS3PVmZ0iE7gct0MG/8+
-2fmUvKlfRLYmisd1w8pk1LSu1XUlryM1MNTH9epTftWv+16gIh1oL9abJZyjrfF5a4qccp3oFAcz
-Wxxx4DpvlaKKxuytRDzeth5rW4W8qBFesvEX8RFRmLBHoB+TpCmRVCCb1gFCruzHqhhW6+qUF6tC
-pL26nlWN2K+W1LhRjxlVGKmRTFYVo7CiJug09E+GJb+QocMCPMWBK1wvEOfRFF2U0klK8CppqqvG
-pylRc2Zn+XDQWZIL8iO5KC9S+1RekOex1uOyZGR/w/Hf1lhzqVfFsxE39B/ws7Rm3N3nDrhPuMfc
-w3R/aE28KsfY2J+RPNp+j+KaOoCey4h+Dd48b9O5G0v2K7j0AM6s+5WQ/E0wVoK+pA6/3bup7bJf
-CMGjwvxTsr74/f/F95m3TH9x8o0/TU//N+7/D/ScVcA=`,
-    "base64"
-  );
-  return zlib.inflateSync(ttf);
-}
-
-function polyval([a, b]: readonly [number, number], x: number) {
-  return a * x + b;
-}
 function pixelToDots(pixels: number, dpi: number): number {
   return (pixels / dpi) * 72;
 }
 async function visibleFont() {
   return await fs.readFile(__dirname + "/data/NotoSans-Regular.ttf"); // StandardFonts.Helvetica;
+}
+async function invisibleFont() {
+  return await fs.readFile(__dirname + "/data/invisible1.ttf");
 }
 import Orientation = docai.Document.Page.Layout.Orientation;
 
@@ -340,21 +322,28 @@ type Config = {
   debugDraw: boolean;
   writeTxt: boolean;
   writeHocr: boolean;
-  writePdf: boolean;
+  writePdf?: string;
+  input: string[];
+
+  help?: boolean;
 };
-async function toPDF(
+async function addToPDF(
   imageFileName: string,
+  doc: o.PDFDocument,
   [wpix, hpix]: [number, number],
   page: docai.Document.IPage,
   documentText: string,
   config: Config
 ) {
   const visibleText = config.debugDraw;
-  const doc = await PDFDocument.create();
-  doc.registerFontkit(fontkit);
+
   const jpgFile = await fs.readFile(imageFileName);
   const exifInfo = ExifParserFactory.create(jpgFile).parse();
   const { width: origwpix, height: orighpix } = exifInfo.getImageSize();
+  if (wpix == 0 || hpix == 0) {
+    wpix = origwpix;
+    hpix = orighpix;
+  }
   const dpi = exifInfo.tags?.XResolution ?? 300;
   const ydpi = exifInfo.tags?.YResolution ?? 300;
   if (ydpi !== 300) throw Error(`dpi not square: ${dpi}`);
@@ -372,7 +361,7 @@ async function toPDF(
     rotate: trafo.rotate,
   });
   const font = await doc.embedFont(
-    visibleText ? await visibleFont() : invisibleFont()
+    visibleText ? await visibleFont() : await invisibleFont() // StandardFonts.Helvetica
   );
 
   for (const line of page.lines!) {
@@ -427,8 +416,6 @@ async function toPDF(
             math.multiply(math.add(bl, br), 0.5)
           )
         );
-
-        console.log(o.radiansToDegrees(angle));
       }
       const fontSize = font.sizeAtHeight(textHeightDots);
       // trim since words end with space but box doesn't include the trailing space
@@ -473,30 +460,25 @@ async function toPDF(
   }
   return doc;
 }
-async function main(imageFilePath: string) {
-  const config: Config = {
-    writeTxt: true,
-    writePdf: true,
-    writeHocr: false,
-    debugDraw: false,
-  };
+async function ocrOneImage(
+  imageFilePath: string,
+  config: Config,
+  pdfDocument: o.PDFDocument | null
+) {
   const jsonFilePath = imageFilePath + ".docai.json.zst";
   const txtFilePath = imageFilePath + ".ocr.txt";
-  const pdfFilePath = imageFilePath + ".ocr.pdf";
-  const hocrFilePath = imageFilePath + ".hocr";
   let ocr: docai.IProcessResponse;
-  const { ZstdSimple } = await ZstdInit();
+  const { ZstdSimple, ZstdStream } = await zstd;
   try {
-    ocr = JSON.parse(
-      new TextDecoder().decode(
-        ZstdSimple.decompress(await fs.readFile(jsonFilePath))
-      )
+    const txt = new TextDecoder().decode(
+      ZstdStream.decompress(await fs.readFile(jsonFilePath))
     );
+    ocr = JSON.parse(txt);
   } catch (e) {
     if (!e || typeof e !== "object" || !("code" in e) || e.code !== "ENOENT")
       throw e;
     ocr = await runOCR(imageFilePath);
-    const jsonCompressed = ZstdSimple.compress(
+    const jsonCompressed = ZstdStream.compress(
       new TextEncoder().encode(JSON.stringify(ocr, null, 2)),
       19
     );
@@ -511,7 +493,7 @@ async function main(imageFilePath: string) {
   }
 
   if (ocr.document?.pages?.length !== 1) throw Error("not exactly one page");
-  if (!ocr.document.text) throw Error("no text");
+  if (ocr.document.text == null) throw Error("no text");
   const page = ocr.document.pages[0];
   if (!page.lines) throw Error("no lines");
   assertArraySorted(page.lines, (line) => getSeg(line).startIndex);
@@ -521,8 +503,8 @@ async function main(imageFilePath: string) {
   );
   const width = page.image?.width;
   const height = page.image?.height;
-  if (!width || !height) throw Error("no width or height");
-  if (config.writeHocr) {
+  if (width == null || height == null) throw Error("no width or height");
+  if (config.writeHocr && ocr.document.text) {
     const hocr = toHOCR(
       basename(imageFilePath),
       [width, height],
@@ -530,25 +512,72 @@ async function main(imageFilePath: string) {
       ocr.document.text
     );
     const hocrString = "<!DOCTYPE html>\n" + renderToStaticMarkup(hocr);
+    const hocrFilePath = imageFilePath + ".hocr";
     await fs.writeFile(hocrFilePath, hocrString, { flag: "w" });
     console.log(`wrote hocr to ${hocrFilePath}`);
   }
-  if (config.writePdf) {
-    const pdf = await toPDF(
+  if (pdfDocument) {
+    const pdf = await addToPDF(
       imageFilePath,
+      pdfDocument,
       [width, height],
       page,
       ocr.document.text,
       config
     );
-    const bytes = await pdf.save();
-    await fs.writeFile(pdfFilePath, bytes, { flag: "w" });
-    console.log(`wrote pdf to ${pdfFilePath}`);
   }
 }
-
-const args = process.argv.slice(2) as [string];
-main(...args).catch((err) => {
+async function main() {
+  const config = parse<Config>(
+    {
+      input: {
+        type: String,
+        multiple: true,
+        description: "set of input jpgs",
+      },
+      debugDraw: {
+        type: Boolean,
+        description: "draw debug boxes and visible text in pdf",
+      },
+      writeHocr: {
+        type: Boolean,
+        description: "write hocr files per input image, named <image>.hocr",
+      },
+      writePdf: {
+        type: String,
+        description:
+          "write to a pdf file with given output name (pages are ordered according to input",
+        optional: true,
+      },
+      writeTxt: {
+        type: Boolean,
+        description: "write a .txt file per input image, named <image>.ocr.txt",
+      },
+      help: {
+        type: Boolean,
+        optional: true,
+        alias: "h",
+        description: "Prints this usage guide",
+      },
+    },
+    { helpArg: "help" }
+  );
+  let doc = null;
+  if (config.writePdf) {
+    doc = await PDFDocument.create();
+    doc.registerFontkit(fontkit);
+  }
+  for (const imageFilePath of config.input) {
+    await ocrOneImage(imageFilePath, config, doc);
+    console.log("processed", imageFilePath);
+  }
+  if (config.writePdf && doc) {
+    const bytes = await doc.save();
+    await fs.writeFile(config.writePdf, bytes, { flag: "w" });
+    console.log(`wrote pdf to ${config.writePdf}`);
+  }
+}
+zstd.then(main).catch((err) => {
   console.error(err);
   process.exit(1);
 });
