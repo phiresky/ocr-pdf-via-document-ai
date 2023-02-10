@@ -5,6 +5,7 @@ import * as ai from "@google-cloud/documentai";
 import { renderToStaticMarkup, renderToString } from "react-dom/server";
 import * as React from "react";
 import { basename } from "node:path";
+import binarySearch from "binary-search";
 
 import docai = ai.protos.google.cloud.documentai.v1;
 type DocumentAIOCR = docai.IProcessResponse;
@@ -66,6 +67,24 @@ function assertArraySorted<T>(arr: T[], k: (t: T) => number) {
     last = cur;
   }
 }
+type SaneSeg = {
+  startIndex: number;
+  endIndex: number;
+};
+function getSeg(line: docai.Document.Page.ILine): SaneSeg {
+  const textSegs = line.layout?.textAnchor?.textSegments;
+  if (!textSegs || textSegs.length !== 1)
+    throw Error("expected exactly one text seg");
+  const textSeg = textSegs[0];
+  if (
+    textSeg.startIndex === null ||
+    textSeg.startIndex === undefined ||
+    textSeg.endIndex === null ||
+    textSeg.endIndex === undefined
+  )
+    throw Error("never ahppen");
+  return { startIndex: +textSeg.startIndex, endIndex: +textSeg.endIndex };
+}
 function toHOCR(
   imageFileName: string,
   [w, h]: [number, number],
@@ -73,19 +92,68 @@ function toHOCR(
   documentText: string
 ): JSX.Element {
   if (!page.lines) throw Error("no lines");
-  assertArraySorted(
-    page.lines,
-    (line) => +line.layout?.textAnchor?.textSegments?.[0].startIndex
-  );
+  assertArraySorted(page.lines, (line) => getSeg(line).startIndex);
   assertArraySorted(
     page.tokens!,
-    (t) => t.layout?.textAnchor?.textSegments?.[0].startIndex
+    (t) => +t.layout?.textAnchor?.textSegments?.[0].startIndex!
   );
+  function rangeStr(seg: SaneSeg) {
+    return documentText.slice(+seg.startIndex!, +seg.endIndex!);
+  }
+  function rangeFlonk(seg: SaneSeg) {
+    return `${seg.startIndex}-${seg.endIndex}`;
+  }
+  function getWordsInLine(
+    textSeg: SaneSeg,
+    tokens: docai.Document.Page.IToken[]
+  ) {
+    const inxStart = binarySearch(
+      tokens,
+      textSeg.startIndex,
+      (token, s) => getSeg(token).startIndex - s
+    );
+    const inxEnd = binarySearch(
+      tokens,
+      textSeg.endIndex,
+      (token, s) => getSeg(token).endIndex - s
+    );
+    const filteredTokens = tokens.slice(
+      Math.abs(inxStart),
+      Math.abs(inxEnd) + 1
+    );
+    console.log(filteredTokens.map((t) => rangeStr(getSeg(t))));
+    if (inxStart < 0 || inxEnd < 0) {
+      const toktetx = filteredTokens.map((t) => rangeStr(getSeg(t)));
+      console.log(inxEnd, tokens.length, rangeFlonk(textSeg));
+      throw Error(
+        `start or end not found exactly: ${rangeFlonk(
+          textSeg
+        )} vs first token: ${rangeFlonk(
+          getSeg(tokens[Math.abs(inxStart)])
+        )} to ${rangeFlonk(getSeg(tokens[Math.abs(inxEnd)]))}: ${rangeStr(
+          textSeg
+        )} vs. ${JSON.stringify(toktetx)}`
+      );
+    }
+    return filteredTokens;
+  }
+  function getBbox(line: docai.Document.Page.ILine) {
+    const bbox = line.layout?.boundingPoly?.normalizedVertices;
+    if (!bbox) throw Error("no bbox");
+    const x = bbox.map((b) => Math.round(w * b.x!));
+    const y = bbox.map((b) => Math.round(h * b.y!));
+    const bbox2 = `${Math.min(...x)} ${Math.min(...y)} ${Math.max(
+      ...x
+    )} ${Math.max(...y)}`;
+    return bbox2;
+  }
+
   // todo: ocrp_lang, ocrp_poly, ocrp_nlp
 
   return (
     <html>
       <head>
+        <meta charSet="utf-8" />
         <meta
           name="ocr-system"
           content="google document ai via @phiresky/ocr-pdf-via-document-ai"
@@ -97,18 +165,28 @@ function toHOCR(
         title={`image "${imageFileName}"; bbox 0 0 ${w} ${h};`}
       >
         {page.lines?.map((line, i) => {
-          const bbox = line.layout?.boundingPoly?.normalizedVertices;
-          if (!bbox) throw Error("no bbox");
-          const x = bbox.map((b) => Math.round(w * b.x!));
-          const y = bbox.map((b) => Math.round(h * b.y!));
-          const bbox2 = `${Math.min(...x)} ${Math.min(...y)} ${Math.max(
-            ...x
-          )} ${Math.max(...y)}`;
-          const textSegs = line.layout?.textAnchor?.textSegments;
-          if (!textSegs || textSegs.length !== 1)
-            throw Error("expected exactly one text seg");
-          const textSeg = textSegs[0];
-          let text = documentText.slice(textSeg.startIndex, textSeg.endIndex);
+          const bbox = getBbox(line);
+          const textSeg = getSeg(line);
+          let curIndex = textSeg.startIndex;
+          const words = getWordsInLine(textSeg, page.tokens!);
+          const wordsSpans = words.map((word, i) => {
+            const bbox = getBbox(word);
+            const seg = getSeg(word);
+            return (
+              <span key={i} className="xocr_word" title={`bbox ${bbox}`}>
+                {documentText.slice(seg.startIndex, seg.endIndex)}
+              </span>
+            );
+          });
+          return (
+            <span key={i} className="ocr_line" title={`bbox ${bbox}`}>
+              {wordsSpans}
+            </span>
+          );
+          /*let text = documentText.slice(
+            +textSeg.startIndex!,
+            +textSeg.endIndex!
+          );
           if (text[text.length - 1] !== "\n")
             throw Error(
               `expected \\n at end of line, got ${JSON.stringify(text)}`
@@ -116,10 +194,10 @@ function toHOCR(
           text = text.slice(0, -1);
           console.log(text);
           return (
-            <span key={i} className="ocr_line" title={`bbox ${bbox2}`}>
+            <span key={i} className="ocr_line" title={`bbox ${bbox}`}>
               {text}
             </span>
-          );
+          );*/
         })}
       </div>
       <script src="https://unpkg.com/hocrjs" />
@@ -160,7 +238,7 @@ async function main(imageFilePath: string) {
     ocr.document.pages[0],
     ocr.document.text
   );
-  const hocrString = "<!doctype html>\n" + renderToStaticMarkup(hocr);
+  const hocrString = "<!DOCTYPE html>\n" + renderToStaticMarkup(hocr);
   await fs.writeFile(hocrFilePath, hocrString, { flag: "w" });
 }
 

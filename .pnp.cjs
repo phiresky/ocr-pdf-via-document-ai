@@ -28,10 +28,13 @@ const RAW_RUNTIME_STATE =
         "packageDependencies": [\
           ["@google-cloud/documentai", "npm:6.3.0"],\
           ["@swc/core", "npm:1.3.34"],\
+          ["@types/long", "npm:5.0.0"],\
           ["@types/node", "npm:18.13.0"],\
           ["@types/react", "npm:18.0.27"],\
           ["@types/react-dom", "npm:18.0.10"],\
           ["@yarnpkg/sdks", "npm:3.0.0-rc.39"],\
+          ["binary-search", "npm:1.3.6"],\
+          ["long", "npm:5.2.1"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:b23cde24df2066ebe71aae0af278030b3e6061a6c22368ecfaac44c14f766bda6f8623ad1bcca96edfb81f3cbddf10003f1aa72112023cacdd82f0f4d80ee499#npm:18.2.0"],\
           ["ts-node", "virtual:b23cde24df2066ebe71aae0af278030b3e6061a6c22368ecfaac44c14f766bda6f8623ad1bcca96edfb81f3cbddf10003f1aa72112023cacdd82f0f4d80ee499#npm:10.9.1"],\
@@ -529,6 +532,14 @@ const RAW_RUNTIME_STATE =
           ["@types/long", "npm:4.0.2"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:5.0.0", {\
+        "packageLocation": "../../../.yarn/berry/cache/@types-long-npm-5.0.0-4e59d88a8e-9.zip/node_modules/@types/long/",\
+        "packageDependencies": [\
+          ["@types/long", "npm:5.0.0"],\
+          ["long", "npm:5.2.1"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["@types/markdown-it", [\
@@ -907,6 +918,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../.yarn/berry/cache/bignumber.js-npm-9.1.1-5929e8d8dc-9.zip/node_modules/bignumber.js/",\
         "packageDependencies": [\
           ["bignumber.js", "npm:9.1.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["binary-search", [\
+      ["npm:1.3.6", {\
+        "packageLocation": "../../../.yarn/berry/cache/binary-search-npm-1.3.6-b150a83e72-9.zip/node_modules/binary-search/",\
+        "packageDependencies": [\
+          ["binary-search", "npm:1.3.6"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -2708,10 +2728,13 @@ const RAW_RUNTIME_STATE =
           ["textract-test", "workspace:."],\
           ["@google-cloud/documentai", "npm:6.3.0"],\
           ["@swc/core", "npm:1.3.34"],\
+          ["@types/long", "npm:5.0.0"],\
           ["@types/node", "npm:18.13.0"],\
           ["@types/react", "npm:18.0.27"],\
           ["@types/react-dom", "npm:18.0.10"],\
           ["@yarnpkg/sdks", "npm:3.0.0-rc.39"],\
+          ["binary-search", "npm:1.3.6"],\
+          ["long", "npm:5.2.1"],\
           ["react", "npm:18.2.0"],\
           ["react-dom", "virtual:b23cde24df2066ebe71aae0af278030b3e6061a6c22368ecfaac44c14f766bda6f8623ad1bcca96edfb81f3cbddf10003f1aa72112023cacdd82f0f4d80ee499#npm:18.2.0"],\
           ["ts-node", "virtual:b23cde24df2066ebe71aae0af278030b3e6061a6c22368ecfaac44c14f766bda6f8623ad1bcca96edfb81f3cbddf10003f1aa72112023cacdd82f0f4d80ee499#npm:10.9.1"],\
