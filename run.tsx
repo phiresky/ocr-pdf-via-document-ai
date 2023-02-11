@@ -232,7 +232,8 @@ function pixelToDots(pixels: number, dpi: number): number {
   return (pixels / dpi) * 72;
 }
 async function visibleFont() {
-  return await fs.readFile(__dirname + "/data/NotoSans-Regular.ttf"); // StandardFonts.Helvetica;
+  // return StandardFonts.Helvetica;
+  return await fs.readFile(__dirname + "/data/NotoSans-Regular.ttf");
 }
 async function invisibleFont() {
   return await fs.readFile(__dirname + "/data/invisible1.ttf");
@@ -466,7 +467,6 @@ async function ocrOneImage(
   pdfDocument: o.PDFDocument | null
 ) {
   const jsonFilePath = imageFilePath + ".docai.json.zst";
-  const txtFilePath = imageFilePath + ".ocr.txt";
   let ocr: docai.IProcessResponse;
   const { ZstdSimple, ZstdStream } = await zstd;
   try {
@@ -485,11 +485,13 @@ async function ocrOneImage(
     await fs.writeFile(jsonFilePath, jsonCompressed, {
       flag: "wx",
     });
-    if (config.writeTxt && ocr.document?.text) {
-      await fs.writeFile(txtFilePath, ocr.document.text, {
-        flag: "wx",
-      });
-    }
+  }
+  if (config.writeTxt && ocr.document?.text) {
+    const txtFilePath = imageFilePath + ".ocr.txt";
+    await fs.writeFile(txtFilePath, ocr.document.text, {
+      flag: "w",
+    });
+    console.log(`wrote txt to ${txtFilePath}`);
   }
 
   if (ocr.document?.pages?.length !== 1) throw Error("not exactly one page");
