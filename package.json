@@ -1,9 +1,11 @@
 {
-  "name": "textract-test",
+  "name": "@phiresky/ocr-pdf-via-document-ai",
   "packageManager": "yarn@4.0.0-rc.40",
   "scripts": {
-    "ocr": "ts-node --swc run.tsx"
+    "ocr": "ts-node --swc run.tsx",
+    "prepublish": "tsc"
   },
+  "bin": "dist/run.js",
   "dependencies": {
     "@google-cloud/documentai": "^6.3.0",
     "@oneidentity/zstd-js": "^1.0.3",

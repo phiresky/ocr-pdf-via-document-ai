@@ -215,6 +215,35 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@phiresky/ocr-pdf-via-document-ai@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@phiresky/ocr-pdf-via-document-ai@workspace:."
+  dependencies:
+    "@google-cloud/documentai": "npm:^6.3.0"
+    "@oneidentity/zstd-js": "npm:^1.0.3"
+    "@pdf-lib/fontkit": "npm:^1.1.1"
+    "@swc/core": "npm:^1.3.34"
+    "@types/long": "npm:^5.0.0"
+    "@types/node": "npm:^18.13.0"
+    "@types/react": "npm:^18.0.27"
+    "@types/react-dom": "npm:^18.0.10"
+    "@yarnpkg/sdks": "npm:^3.0.0-rc.39"
+    binary-search: "npm:^1.3.6"
+    long: "npm:^5.2.1"
+    mathjs: "npm:^11.5.1"
+    pdf-lib: "npm:^1.17.1"
+    react: "npm:^18.2.0"
+    react-dom: "npm:^18.2.0"
+    ts-command-line-args: "npm:^2.4.2"
+    ts-exif-parser: "npm:^0.2.2"
+    ts-node: "npm:^10.9.1"
+    typescript: "npm:^4.9.5"
+    zstd-codec: "npm:^0.1.4"
+  bin:
+    ocr-pdf-via-document-ai: dist/run.js
+  languageName: unknown
+  linkType: soft
+
 "@protobufjs/aspromise@npm:^1.1.1, @protobufjs/aspromise@npm:^1.1.2":
   version: 1.1.2
   resolution: "@protobufjs/aspromise@npm:1.1.2"
@@ -2595,33 +2624,6 @@ __metadata:
   checksum: b1254685cb870858a072a6863d7f769c5c27f964166cacdf2fee4aac526dc8949fb9cd609a9e0a77e5cb8f993e2d38c966c52de0e71827e8f14a3d4cd43209db
   languageName: node
   linkType: hard
-
-"textract-test@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "textract-test@workspace:."
-  dependencies:
-    "@google-cloud/documentai": "npm:^6.3.0"
-    "@oneidentity/zstd-js": "npm:^1.0.3"
-    "@pdf-lib/fontkit": "npm:^1.1.1"
-    "@swc/core": "npm:^1.3.34"
-    "@types/long": "npm:^5.0.0"
-    "@types/node": "npm:^18.13.0"
-    "@types/react": "npm:^18.0.27"
-    "@types/react-dom": "npm:^18.0.10"
-    "@yarnpkg/sdks": "npm:^3.0.0-rc.39"
-    binary-search: "npm:^1.3.6"
-    long: "npm:^5.2.1"
-    mathjs: "npm:^11.5.1"
-    pdf-lib: "npm:^1.17.1"
-    react: "npm:^18.2.0"
-    react-dom: "npm:^18.2.0"
-    ts-command-line-args: "npm:^2.4.2"
-    ts-exif-parser: "npm:^0.2.2"
-    ts-node: "npm:^10.9.1"
-    typescript: "npm:^4.9.5"
-    zstd-codec: "npm:^0.1.4"
-  languageName: unknown
-  linkType: soft
 
 "tiny-emitter@npm:^2.1.0":
   version: 2.1.0
