@@ -223,7 +223,6 @@ __metadata:
     "@oneidentity/zstd-js": "npm:^1.0.3"
     "@pdf-lib/fontkit": "npm:^1.1.1"
     "@swc/core": "npm:^1.3.34"
-    "@types/long": "npm:^5.0.0"
     "@types/node": "npm:^18.13.0"
     "@types/react": "npm:^18.0.27"
     "@types/react-dom": "npm:^18.0.10"
@@ -526,15 +525,6 @@ __metadata:
   version: 4.0.2
   resolution: "@types/long@npm:4.0.2"
   checksum: b6e4c16ca43a11f229cf2d54697404e791f48ac9107fb1052b8dec92e730f54ebfe6773d68fe7d27531d9b75de1aafce0fbac206cea0ef13bb1b97f5436d90cf
-  languageName: node
-  linkType: hard
-
-"@types/long@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "@types/long@npm:5.0.0"
-  dependencies:
-    long: "npm:*"
-  checksum: e0ff387ee982cfb065f8129acc71dc26e90225063dce4abcfe3b64dba1048c497c1effcd2054a8baabd527b9d8c30dd2c39b3f5f10114508b957af49a01d3b07
   languageName: node
   linkType: hard
 
@@ -1914,17 +1904,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"long@npm:*, long@npm:^5.0.0, long@npm:^5.2.1":
-  version: 5.2.1
-  resolution: "long@npm:5.2.1"
-  checksum: f81b18ff295bd2c97e6704ba9d38d787db014e26ccdb897f37a4448d8562a2fdd040bc19ba8aa20708cfd369fa051a001e22e23dbcf0fc85fcb8968e11ce1ee3
-  languageName: node
-  linkType: hard
-
 "long@npm:^4.0.0":
   version: 4.0.0
   resolution: "long@npm:4.0.0"
   checksum: fc6d1bf0f251ec045c1004cb3a15be1dd6da11d8232cbfd63a4e7c5becd6d269ecac2e2f267114328280b20cdb00af435bd9a3d7b3af824484b59a635b9d52ab
+  languageName: node
+  linkType: hard
+
+"long@npm:^5.0.0, long@npm:^5.2.1":
+  version: 5.2.1
+  resolution: "long@npm:5.2.1"
+  checksum: f81b18ff295bd2c97e6704ba9d38d787db014e26ccdb897f37a4448d8562a2fdd040bc19ba8aa20708cfd369fa051a001e22e23dbcf0fc85fcb8968e11ce1ee3
   languageName: node
   linkType: hard
 

@@ -11,7 +11,6 @@
     "@oneidentity/zstd-js": "^1.0.3",
     "@pdf-lib/fontkit": "^1.1.1",
     "@swc/core": "^1.3.34",
-    "@types/long": "^5.0.0",
     "@types/node": "^18.13.0",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
@@ -31,5 +30,10 @@
   "devDependencies": {
     "@yarnpkg/sdks": "^3.0.0-rc.39"
   },
-  "version": "0.0.0"
+  "version": "0.0.4",
+  "files": [
+    "dist/run.js",
+    "dist/run.js.map",
+    "data/*.ttf"
+  ]
 }

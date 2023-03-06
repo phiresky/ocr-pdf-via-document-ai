@@ -30,7 +30,6 @@ const RAW_RUNTIME_STATE =
           ["@oneidentity/zstd-js", "npm:1.0.3"],\
           ["@pdf-lib/fontkit", "npm:1.1.1"],\
           ["@swc/core", "npm:1.3.34"],\
-          ["@types/long", "npm:5.0.0"],\
           ["@types/node", "npm:18.13.0"],\
           ["@types/react", "npm:18.0.27"],\
           ["@types/react-dom", "npm:18.0.10"],\
@@ -306,7 +305,6 @@ const RAW_RUNTIME_STATE =
           ["@oneidentity/zstd-js", "npm:1.0.3"],\
           ["@pdf-lib/fontkit", "npm:1.1.1"],\
           ["@swc/core", "npm:1.3.34"],\
-          ["@types/long", "npm:5.0.0"],\
           ["@types/node", "npm:18.13.0"],\
           ["@types/react", "npm:18.0.27"],\
           ["@types/react-dom", "npm:18.0.10"],\
@@ -648,14 +646,6 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../../../.yarn/berry/cache/@types-long-npm-4.0.2-e7bdc00dd4-9.zip/node_modules/@types/long/",\
         "packageDependencies": [\
           ["@types/long", "npm:4.0.2"]\
-        ],\
-        "linkType": "HARD"\
-      }],\
-      ["npm:5.0.0", {\
-        "packageLocation": "../../../../.yarn/berry/cache/@types-long-npm-5.0.0-4e59d88a8e-9.zip/node_modules/@types/long/",\
-        "packageDependencies": [\
-          ["@types/long", "npm:5.0.0"],\
-          ["long", "npm:5.2.1"]\
         ],\
         "linkType": "HARD"\
       }]\

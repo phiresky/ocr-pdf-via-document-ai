@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import * as ai from "@google-cloud/documentai";
 import { ZstdInit } from "@oneidentity/zstd-js";
 import fontkit from "@pdf-lib/fontkit";
@@ -8,6 +9,7 @@ import * as fs from "node:fs/promises";
 import { basename } from "node:path";
 import * as process from "node:process";
 import * as o from "pdf-lib";
+import { fileURLToPath } from "node:url";
 import {
   PDFDocument,
   rgb,
@@ -231,12 +233,13 @@ function toHOCR(
 function pixelToDots(pixels: number, dpi: number): number {
   return (pixels / dpi) * 72;
 }
+const __dirname = fileURLToPath(new URL(".", import.meta.url));
 async function visibleFont() {
   // return StandardFonts.Helvetica;
-  return await fs.readFile(__dirname + "/data/NotoSans-Regular.ttf");
+  return await fs.readFile(__dirname + "../data/NotoSans-Regular.ttf");
 }
 async function invisibleFont() {
-  return await fs.readFile(__dirname + "/data/invisible1.ttf");
+  return await fs.readFile(__dirname + "../data/invisible1.ttf");
   // return await fs.readFile(__dirname + "/data/invisible1-glyphless.ttf");
 }
 import Orientation = docai.Document.Page.Layout.Orientation;
