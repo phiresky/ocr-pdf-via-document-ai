@@ -1,8 +1,8 @@
 {
   "name": "textract-test",
-  "packageManager": "yarn@4.0.0-rc.39",
+  "packageManager": "yarn@4.0.0-rc.40",
   "scripts": {
-    "ocr": "ts-node --transpile-only run.tsx"
+    "ocr": "ts-node --swc run.tsx"
   },
   "dependencies": {
     "@google-cloud/documentai": "^6.3.0",

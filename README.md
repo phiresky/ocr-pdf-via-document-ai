@@ -49,4 +49,4 @@ The aw document-ai output is always written so if you run it again it will only 
 ## TODO
 
 - Package as npm package, fix startup time
-- Ensure PDF output has all the text in the "correct" order when run through `pdftotext`
+- Ensure PDF output has all the text in the "correct" order when run through `pdftotext` (also compare with hocr-pdf)

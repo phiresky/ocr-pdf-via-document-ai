@@ -196,7 +196,7 @@ function toHOCR(
             const bbox = getHOCRBbox(word);
             const seg = getSeg(word);
             return (
-              <span key={i} className="xocr_word" title={`bbox ${bbox}`}>
+              <span key={i} className="ocrx_word" title={`bbox ${bbox}`}>
                 {documentText.slice(seg.startIndex, seg.endIndex)}
               </span>
             );
@@ -237,6 +237,7 @@ async function visibleFont() {
 }
 async function invisibleFont() {
   return await fs.readFile(__dirname + "/data/invisible1.ttf");
+  // return await fs.readFile(__dirname + "/data/invisible1-glyphless.ttf");
 }
 import Orientation = docai.Document.Page.Layout.Orientation;
 
@@ -370,7 +371,6 @@ async function addToPDF(
     //try:
     //    baseline = p2.search(line.attrib["title"]).group(1).split()
     //except AttributeError:
-    const baseline = [0, 0] as const;
     const words = getWordsInLine(documentText, getSeg(line), page.tokens!);
     let i = 0;
     for (const word of words) {
@@ -382,7 +382,6 @@ async function addToPDF(
       }
       const box = getBbox(word, [wdots, hdots]);
 
-      const baselineEstimate = ((box.ymax - box.ymin) * 1) / 4; // baseline at 1/4 of height from bottom
       /*p.drawRectangle({
         x: box.xmin,
         y: hdots - box.ymin,
@@ -450,7 +449,7 @@ async function addToPDF(
       );
       p.drawText(rawtext, {
         x: boundingPoly[3].x! * wdots, //box.xmin,
-        y: hdots - boundingPoly[3].y! * hdots, // + baselineEstimate,
+        y: /*hdots - linebox.ymax, // */ hdots - boundingPoly[3].y! * hdots, // + baselineEstimate,
         font,
         size: fontSize,
         color: rgb(0, 0, 0),
@@ -567,6 +566,7 @@ async function main() {
   let doc = null;
   if (config.writePdf) {
     doc = await PDFDocument.create();
+    doc.setCreator("@phiresky/ocr-pdf-via-document-ai");
     doc.registerFontkit(fontkit);
   }
   for (const imageFilePath of config.input) {
